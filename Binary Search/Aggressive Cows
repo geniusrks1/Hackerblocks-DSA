@@ -1,0 +1,63 @@
+//position array is given , now we have to place given cows such that minimum distance any two of them as large as possible
+// example position [1 2 4 8 9] , cows=3 
+// approach first we will find minimum distance possible between two cows its 1(2-1) and maximum distance possible between two cows its 8(9-1)
+// so we can say our ans must lie in between 1 and 8
+// now we pick every time a distance that is = start+end/2 and check using this can be able to put all the cows are not
+// if each cow can be placed at distance >= mid then we will increase our mid value that means start=mid+1; now our new range become new start ,end
+// if  we can placed all cows using mid distance then we will reduce our distance that means end=mid-1;
+// this procces runs untill end>start;
+
+
+
+
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int c=s.nextInt();
+		int pos[]=new int[n];
+		for(int i=0;i<n;i++)
+		pos[i]=s.nextInt();
+
+Arrays.sort(pos);
+int largest_minimum_distance=BinarySearch(pos,n,c);
+
+System.out.print(largest_minimum_distance);
+    }
+	public static int BinarySearch(int pos[], int n, int c){
+		int start=1;
+		int end=pos[n-1]-pos[0];
+		int maximum=Integer.MIN_VALUE;
+		while(start<=end){
+			int mid=(start+end)/2;
+            
+			if(isPossible(pos,mid,n,c)){
+				start=mid+1;
+				if(mid>maximum)
+				 maximum=mid;
+			}
+			else
+			end=mid-1;
+
+		}
+		return maximum;
+	}
+
+	public static boolean isPossible(int arr[], int distance, int n, int c){
+		int count=1;
+		int start=arr[0];
+
+		for(int i=1;i<n;i++){
+			if(arr[i]-start>=distance){
+				count++;
+				start=arr[i];
+				if(count==c)
+				return true;
+			}
+		}
+		return false;
+
+	}
+}
+
