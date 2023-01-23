@@ -1,0 +1,54 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+        int totalSum=0;
+		for(int i=0;i<n;i++){
+		arr[i]=s.nextInt();
+        totalSum+=arr[i];
+        }
+
+		int op1=maximumSubarraySum(arr,n);
+        int op2=totalSum-minimumSubarraySum(arr,n);
+        int ans=op2==0?op1:Math.max(op1,op2);
+        System.out.print(ans);
+
+    }
+
+
+public static int minimumSubarraySum(int arr[], int n){
+		int min=Integer.MAX_VALUE;
+		int currSum=0;
+		for(int i=0;i<n;i++){
+			currSum+=arr[i];
+			min=Math.min(currSum,min);
+			if(currSum>0)
+			 currSum=0;
+
+		}
+		return min;
+	}
+
+
+
+
+
+
+
+
+
+	public static int maximumSubarraySum(int arr[], int n){
+		int max=Integer.MIN_VALUE;
+		int currSum=0;
+		for(int i=0;i<n;i++){
+			currSum+=arr[i];
+			max=Math.max(currSum,max);
+			if(currSum<0)
+			 currSum=0;
+
+		}
+		return max;
+	}
+    }
