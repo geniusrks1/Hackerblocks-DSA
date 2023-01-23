@@ -1,0 +1,62 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner s=new Scanner(System.in);
+		int t=s.nextInt();
+		while(t-->0){
+		int totalBooks=s.nextInt();
+		int totalStudets=s.nextInt();
+		int bookspages[]=new int[totalBooks];
+	for(int i=0;i<totalBooks;i++)
+	bookspages[i]=s.nextInt();
+int ans=minMax(bookspages,totalBooks,totalStudets);
+System.out.println(ans);
+
+		}}
+		public static int minMax(int arr[], int n, int totalStudets){
+           
+		   int totalSum=0;
+		   for(int i:arr)
+		   totalSum+=i;
+
+		   int start=arr[n-1]; // minimum pages can allocate
+		   int end=totalSum; // maximum pages can be alocated
+
+		   // our ans lie in the range of start and end
+           int ans=-1;
+		   while(start<=end){
+			   int mid=(start+end)/2; // work when start and end both are greater then zero
+			   
+			   if(isAllocationPossible(arr,n,mid,totalStudets)){
+			      ans=mid;
+				  end=mid-1;  // we will reduce our barrior to get minimum ans possible
+			   }
+			   else
+				   start=mid+1; // we will increase our barrior
+			   
+		   }
+		   return ans;
+		}
+
+		public static boolean isAllocationPossible(int arr[],int n,int maxlimit,int totalStudets){
+			int allcotedStudent=1;
+			int pages=0;
+
+			for(int i=0;i<n;i++){
+             if(arr[i]>maxlimit)
+			 return false;
+
+              
+			 if(pages+arr[i]>maxlimit){
+              allcotedStudent++;
+			  pages=arr[i];
+			 }
+			 else
+			  pages+=arr[i];
+			 
+		}
+
+         return allcotedStudent> totalStudets? false:true;
+
+
+    }}
