@@ -1,0 +1,56 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+  Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        arr[i]=s.nextInt();
+
+        int ssum=0;
+        int dsum=0;
+        int start=0;
+        int end=n-1;
+while(start<=end){
+    if(arr[start]>arr[end]){
+        ssum+=arr[start];
+        start++;
+
+        if(start<=end && arr[start]>arr[end]){
+            dsum+=arr[start];
+            start++;
+        }
+        else{
+            dsum+=arr[end];
+            end--;
+        }
+
+    }
+
+        else{
+        ssum+=arr[end];
+        end--;
+
+        if(start<=end && arr[start]>arr[end]){
+            dsum+=arr[start];
+            start++;
+        }
+        else{
+            if(start<=end){
+            dsum+=arr[end];
+            end--;
+            }
+        }
+
+    }
+
+
+}
+
+
+
+
+
+        System.out.print(ssum+" "+dsum);
+    }
+}
