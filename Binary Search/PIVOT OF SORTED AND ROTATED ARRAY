@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+       Scanner s=new Scanner(System.in);
+	   int n=s.nextInt();
+	   int arr[]=new int[n];
+	   for(int i=0;i<n;i++)
+	   arr[i]=s.nextInt();
+	   int pivotIndex=PivotIndex(arr,0,n-1);// pivotindex tells where continuty breaking
+	   // or we can say where minimum element is present
+	   System.out.print(pivotIndex);
+    }
+	public static int PivotIndex(int arr[], int start, int end ){
+	// pivot index tells where continuty is breaking in rotated sorted Array
+	int pi=0;
+		while(start<=end){
+			int mid=(start+end)/2;
+			if(arr[mid]>=arr[0])
+			start=mid+1;
+			else{
+            end=mid-1;
+			pi=mid;
+			}	
+		}
+		return pi-1;
+	}
+}
