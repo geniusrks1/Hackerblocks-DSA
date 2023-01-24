@@ -1,0 +1,44 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+        Scanner s=new Scanner(System.in);
+        String str1=s.next();
+        String str2=s.next();
+        int n1=str1.length();
+        int n2=str2.length();
+        int i=0;
+        int j=0;
+
+        while(i<n1 && j<n2){
+          if(str1.charAt(i)!=str2.charAt(j)){
+              System.out.print(false);
+              return;
+          }
+          else{
+          int count1=0;
+          int count2=0;
+         for(int x=i;x<n1;x++){
+             if(str1.charAt(x)==str1.charAt(i))
+             count1++;
+             else
+             break;
+         }
+
+           for(int y=j;y<n2;y++){
+             if(str2.charAt(y)==str2.charAt(j))
+             count2++;
+             else
+             break;
+         }
+
+         i+=count1;
+         j+=count2;
+
+          }
+        }
+
+
+        System.out.print(true);
+
+    }
+}
