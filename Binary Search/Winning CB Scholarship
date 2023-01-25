@@ -1,0 +1,60 @@
+
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+Scanner s=new Scanner(System.in);
+long n=s.nextLong(); // number student
+long m=s.nextLong(); // number of coupen
+long x=s.nextLong(); // minimum number of coupen needed to get 100% discounted
+long y=s.nextLong(); // number of additional coupen pay by poor performing
+long ans=maximumStudent(n,m,x,y);
+System.out.print(ans);
+    }
+
+
+	public static long maximumStudent(long n, long m, long x, long y){
+        long start=0; // minimum student
+		long end=n; //maximum student
+		long max=0;
+		while(start<=end){
+			long mid=(start+end)/2;
+         if(isPossible(mid,n,m,x,y)){
+			 // is posiible to get discount mid number of student if yes
+			 // then we will increase our number of student and check for greater ans
+			 start=mid+1;
+			 max=mid;
+		 }  
+		 else
+		 end=mid-1; // check for smaller number of student less than mid
+
+		}
+   return max;
+
+	}
+	public static boolean isPossible(long student,long n, long m, long x, long y ){
+		return student*x<=m+(n-student)*y;
+	}
+}
+
+
+
+
+// method 2 O(1) time complexity
+
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+Scanner s=new Scanner(System.in);
+	long n=s.nextLong(); // number student
+  long m=s.nextLong(); // number of coupen
+  long x=s.nextLong(); // minimum number of coupen needed to get 100% discounted
+  long y=s.nextLong(); // number of additional coupen pay by poor performing
+	long  ans=(m+n*y)/(x+y);
+System.out.print(ans);
+	
+}
+
+
+
+
+
