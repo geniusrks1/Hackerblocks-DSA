@@ -1,0 +1,29 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int arr[]=new int[n];
+      
+      
+        for(int i=0;i<n;i++){
+            arr[i]=s.nextInt();
+            }
+    long leftArray[]=new long[n];
+    long rightArray[]=new long[n];
+    leftArray[0]=1;
+    for(int i=1;i<n;i++){
+            leftArray[i]=leftArray[i-1] *arr[i-1];
+            }
+
+rightArray[n-1]=1;
+for(int i=n-2;i>=0;i--){
+            rightArray[i]=(rightArray[i+1] )* arr[i+1];
+            }
+            
+            for(int i=0;i<n;i++){
+            System.out.print(leftArray[i]*rightArray[i] +" ");
+            }
+
+    }
+}
