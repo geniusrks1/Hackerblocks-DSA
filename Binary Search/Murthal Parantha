@@ -1,0 +1,48 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner s=new Scanner(System.in);
+		int p=s.nextInt();
+		int c=s.nextInt();
+		int arr[]=new int[c];
+		for(int i=0;i<c;i++)
+		arr[i]=s.nextInt();
+
+		int minimum_time=binarySearch(arr,c,p);
+System.out.print(minimum_time);
+    }
+
+	public static int binarySearch(int arr[], int n, int p){
+		Arrays.sort(arr);
+		int start=0;
+		int end=Integer.MAX_VALUE;
+		int min=Integer.MAX_VALUE;
+		while(start<=end){
+			int mid=(start+end)/2;
+
+			if(isPossible(arr,n,p,mid)){ // if possible to cook parathas in mid unit of time
+				end=mid-1; // we will reduce our time and check again
+				if(mid<min)
+				  min=mid;
+			}
+			else
+			start=mid+1; // we will increase our mid unit of time and search again
+		}
+		return min;
+	}
+	public static boolean isPossible(int arr[],int n, int p, int givenTime){
+		int pcount=0;
+		for(int i=0;i<n;i++){
+			int time=arr[i];
+		    int count=0;
+			int j=2;
+			while(time<=givenTime){  
+				count++;
+				time+=j*arr[i]; //arr[i] is rank 
+				j++;
+			}
+			pcount+=count;
+		}
+		return pcount>=p?true:false;
+	}
+}
