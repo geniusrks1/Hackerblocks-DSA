@@ -1,0 +1,54 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+
+	Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		arr[i]=s.nextInt();
+
+
+System.out.print(OddLengthSum(arr,n));
+
+
+    }
+    // time complexity n^3
+// public static int OddLengthSum(int[] arr, int n){
+//     int sum = 0;
+  
+//     for(int i = 0; i < n; i++){
+//         for(int j = i; j < n; j += 2){
+//             for(int k = i; k <= j; k++){
+//                 sum += arr[k];
+//             }
+//         }
+//     }
+     
+//     return sum;
+// }
+
+
+
+public static int OddLengthSum(int []arr ,int n){
+    int sum = 0;
+
+ 
+ 
+    for(int i = 0; i < n; i++){
+         
+     int no_of_left_choices=i+1;
+     int no_of_right_choices=n-i;
+     int count_in_all_subarray=no_of_left_choices*no_of_right_choices;
+     // for odd length 50% of this
+     int odd_length_subarray= (count_in_all_subarray+1)/2;
+     sum+=odd_length_subarray*arr[i];
+    
+    }
+ 
+
+    return sum;
+}
+
+}
