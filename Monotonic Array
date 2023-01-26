@@ -1,0 +1,52 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+	int arr[]=new int[n];
+	for(int i=0;i<n;i++)
+	arr[i]=s.nextInt();
+
+System.out.print(monotonicCheck(arr,n));
+    }
+
+
+
+
+public static boolean monotonicCheck(int arr[],int n){
+    
+    int incarr[]=new int[n];
+    int decarr[]=new int[n];
+    
+    for(int i=0; i<n; i++){
+       incarr[i] = arr[i];
+       decarr[i] = arr[i];
+    }
+
+    
+    Arrays.sort(incarr);
+    Arrays.sort(decarr); 
+    reverse(decarr);
+    
+
+    if( Arrays.equals(incarr, arr)  || Arrays.equals(decarr,arr) ) // compare elemets
+    return true;
+    
+    return false;
+
+    
+}  
+
+public static void reverse(int arr[]){
+    int n=arr.length;
+    int start=0;
+    int end=n-1;
+    while(start<end){
+     int temp=arr[start];
+     arr[start]=arr[end];
+    arr[end]=temp;
+    start++;
+    end--;
+    }
+}
+}
