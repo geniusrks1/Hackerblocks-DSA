@@ -1,0 +1,61 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner s=new Scanner(System.in);
+		long k=s.nextLong(); // number of painters
+		int n=s.nextInt(); // numbers of board
+		long arr[]=new long[n];// length of each board
+		for(int i=0;i<n;i++)
+		arr[i]=s.nextLong();
+		
+
+		long ans=MinimumTime(arr,n,k);
+		System.out.print(ans);
+
+
+    }
+
+	public static long MinimumTime(long arr[], long n ,long k){
+
+
+
+
+ long start=0;
+ long end=Integer.MAX_VALUE;
+ long ans=Integer.MAX_VALUE;
+ while(start<=end){
+	 long mid=(start+end)/2;
+
+	 if(isPosible(arr,n,k,mid)) {// taking mid amount of time ,
+	 //if posible to palong all the board then we 
+	 // then we will reduce our mid 
+	 end=mid-1;
+	 ans=mid;
+	 if(mid<ans)
+	 ans=mid;
+ }
+ else
+ start=mid+1;
+
+
+	}
+	return ans;
+}
+
+public static boolean isPosible(long arr[], long n, long k, long GivenTime){
+	long time=0;
+	long painters=1;
+	for(int i=0;i<n;i++){
+		time+=arr[i];
+		if(time>GivenTime){
+			time=arr[i];
+			painters++;
+	if(painters> k || arr[i] > GivenTime) 
+                    return false;
+		}
+	}
+
+	return true;
+
+}
+}
