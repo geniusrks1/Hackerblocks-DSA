@@ -1,0 +1,69 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+Scanner s=new Scanner(System.in);
+int n=s.nextInt();
+int n1=(n+1)/2;
+int i=0;
+while(i<n1){
+	int space1=0;
+	while(space1<n1-i-1){
+		System.out.print("    ");
+		space1++;
+	}
+	int j1=0;
+	while(j1<=i){
+		if(i==0)
+		break;
+		System.out.print(i+1-j1+" ");
+		j1++;
+	}
+
+	int space2=0;
+	while(space2<=2*i-2){
+		System.out.print("  ");
+		space2++;
+	}
+
+int j2=0;
+	while(j2<=i){
+		System.out.print(j2+1+" ");
+		j2++;
+	}
+	System.out.println();
+i++;
+}
+
+int n2=n-n1;
+ i=0;
+while(i<n2){
+	int space1=0;
+	while(space1<=i){
+		System.out.print("    ");
+		space1++;
+	}
+	int j1=0;
+	while(j1<n2-i){
+		System.out.print(n2-i-j1+" ");
+		j1++;
+	}
+
+	int space2=0;
+	while(space2<2*n2-2*i-3){
+		System.out.print("  ");
+		space2++;
+	}
+
+int j2=0;
+	while(j2<n2-i){
+if(i==n2-1)
+break;
+
+		System.out.print(j2+1+" ");
+		j2++;
+	}
+	System.out.println();
+i++;
+}
+    }
+}
