@@ -1,0 +1,40 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+       Scanner s=new Scanner(System.in);
+	   char ch=s.next().charAt(0);
+	   do{
+if(ch=='+'|| ch=='/'|| ch=='-'|| ch=='*'|| ch=='%'){
+	int n1=s.nextInt();
+	int n2=s.nextInt();
+	int ans=0;
+	switch(ch){
+		case '+' : 
+		ans=n1+n2; 
+		break;
+		case '-' : 
+		ans=n1-n2;
+		break;
+		case  '*': 
+		ans=n1*n2;
+		break;
+		case '/': 
+		ans=n1/n2;
+		break;
+		case '%': 
+			ans=n1%n2;
+			break;
+			}
+			System.out.println(ans);
+}
+else if(ch=='x'|| ch=='X')
+return;
+else{
+	System.out.println("Invalid operation. Try again.");
+}
+ch=s.next().charAt(0);
+	   }
+	   while(ch!='\0');
+
+    }
+}
