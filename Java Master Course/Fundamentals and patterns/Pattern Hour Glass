@@ -1,0 +1,42 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		// upper part
+		for(int i=0;i<n;i++){
+
+for(int space=1;space<=i;space++)
+System.out.print("  ");
+
+for(int j=n-i;j>=0;j--)
+System.out.print(j+" ");
+
+for(int j=1;j<=n-i;j++)
+System.out.print(j+" ");
+
+System.out.println();
+		}
+
+// some space+0 print+ line change
+
+for(int space=0;space<n;space++)
+System.out.print("  ");
+
+System.out.println(0);
+
+// lower part
+for(int i=0;i<n;i++){
+for(int space=1;space<n-i;space++)
+System.out.print("  ");
+
+for(int j=i+1;j>=0;j--)
+System.out.print(j+" ");
+
+for(int j=1;j<=i+1;j++)
+System.out.print(j+" ");
+
+System.out.println();
+		}
+    }
+}
