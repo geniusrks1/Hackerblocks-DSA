@@ -1,0 +1,19 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+Scanner s= new Scanner(System.in);
+int n1=s.nextInt();
+int n2=s.nextInt();
+  
+int i=1;
+int count=0;
+while(count<n1){
+	int term=3*i+2;
+	if(term%n2 !=0){
+		System.out.println(term);
+		count++;
+	}
+	i++;
+}
+    }
+}
