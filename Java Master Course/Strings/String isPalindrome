@@ -1,0 +1,17 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner s=new Scanner(System.in);
+		String str=s.next();
+		System.out.print( f(str,0,str.length()-1));
+    }
+	public static boolean f(String str, int start, int end){
+		if(start>=end)
+		return true;
+		
+		if(str.charAt(start)==str.charAt(end))
+		return f(str,start+1,end-1);
+		else
+		return false;
+	}
+}
