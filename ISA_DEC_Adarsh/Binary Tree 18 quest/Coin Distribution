@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* left;
+	node* right;
+
+    node(int data){
+        this->data=data;
+        this->left=NULL;
+        this->right=NULL;
+    }
+};
+
+node* buildPreOrder(){
+    string s;
+    cin>>s;
+    if(s=="true"){
+        int d;
+        cin>>d;
+
+        node* root=new node(d);
+        root->left=buildPreOrder();
+        root->right=buildPreOrder();
+        return root;
+    }
+    else return NULL;
+    
+}
+
+    int traverse(node* root, int &moves)
+    {
+        if(!root) return 0;
+        int left = traverse(root->left,moves);
+        int right = traverse(root->right,moves);
+        moves += abs(left) + abs(right);
+        return root->data + left + right -1;
+    }
+    
+    int distributeCoins(node* root) {
+        
+        int moves = 0;
+        traverse(root,moves);
+        return moves;
+    }
+
+
+
+
+
+int main() {
+    int d;
+    cin>>d;
+    node* root=new node(d);
+    root->left=buildPreOrder();
+    root->right=buildPreOrder();
+
+   cout<< distributeCoins(root);
+    return 0;
+
+}
