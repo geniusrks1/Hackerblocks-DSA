@@ -71,11 +71,14 @@ Node* flattenHelper(Node* root){
         return root;
     }
 
-    void flatten(Node* root) {
+    void flattenR(Node* root) {
         flattenHelper(root);
         return;
         
     }
+
+
+
 
 
 
@@ -89,6 +92,30 @@ Node* flattenHelper(Node* root){
 }
 
 
+void flattenItereative(Node* root) {
+       Node* curr=root;
+        while(curr)
+        {
+            if(curr->left)
+            {
+                //rightmost node of left child
+                Node* p=curr->left;
+                while(p->right)p=p->right;
+                //p pointed to right most node of left child of curr node
+                p->right=curr->right;
+                curr->right=curr->left;
+                curr->left=NULL;
+            }
+            curr=curr->right;
+        }
+        
+    }
+
+
+
+
+
+
 
 int main() {
 
@@ -96,7 +123,8 @@ int main() {
         string s;
         getline(cin,s);
         Node* root = buildTree(s);
-        flatten(root);
+        //flattenR(root);
+        flattenItereative(root);
     printpreOrder(root);
 
     return 0;
